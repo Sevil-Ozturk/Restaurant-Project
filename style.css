@@ -1,0 +1,71 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    place-content: center;
+}
+
+.navbar{
+    background-color: rgb(124, 190, 190);
+    display: flex;
+    text-align: center;
+    height: 60px;
+}
+
+.navbar ul {
+    list-style-type:none;
+    display: inline-flex;
+    overflow: hidden;
+    font: bold 1rem sans-serif;
+}
+
+.navbar ul li{
+    width: 150px;
+    height: 15px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.navbar ul li a , .navbar ul li section{
+    text-decoration: none;
+    color: #fff;
+}
+
+.active .navbar ul li:hover{
+    color: #fff;
+}
+
+.navbar ul li:before {
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0; /* 3px = the thickness */
+    background: #ce4f20; /* the color */
+    scale: 0 1;
+    transition: .3s, translate 0s .3s;
+  }
+
+  .navbar ul:hover li:before {
+    scale: 1;
+  }
+
+  .navbar ul li:hover:before {
+    translate: 0;
+    transition: .3s;
+  }
+
+  .navbar ul:hover li:has(~ li:hover):before {
+    translate: 100% 0;
+    transition: .2s .2s,scale 0s .4s;
+  }
+  .navbar ul:hover li:hover ~ li:before {
+    translate: -100% 0;
+    transition: .2s .2s,scale 0s .4s;
+  }
+  
