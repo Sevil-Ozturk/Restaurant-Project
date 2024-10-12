@@ -1,94 +1,108 @@
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: sans-serif;
-  place-content: center;
+    font-family: sans-serif;
+    place-content: center;
 }
 
 .navbar {
-  background-color: rgb(124, 190, 190);
-  display: flex;
-  text-align: center;
-  height: 60px;
-  padding: 15px 0;
-  justify-content: center;
-  align-items: center;
+    background-color: rgb(124, 190, 190);
+    display: flex;
+    text-align: center;
+    height: 60px;
+    padding: 15px 0;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar ul {
-  list-style-type: none;
-  display: inline-flex;
-  overflow: hidden;
-  font: bold 1rem sans-serif;
-  text-align: center;
+    list-style-type: none;
+    display: inline-flex;
+    overflow: hidden;
+    font: bold 1rem sans-serif;
+    text-align: center;
 }
 
 .navbar ul li {
-  width: 150px;
-  height: 15px;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: .3s;
+    width: 150px;
+    height: 15px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .3s;
 }
 
 .navbar ul li a, .navbar ul li section {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
 
 .navbar ul li:before {
-  content: "";
-  position: absolute;
-  inset: calc(100% - 3px) 0 0 0;
-  background: #ce4f20;
-  scale: 0 1;
-  transition: .3s, translate 0s .3s;
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0;
+    background: #ce4f20;
+    scale: 0 1;
+    transition: .3s, translate 0s .3s;
 }
 
 .navbar ul:hover li:before {
-  scale: 1;
+    scale: 1;
 }
 
 .navbar ul li:hover:before {
-  translate: 0;
-  transition: .3s;
+    translate: 0;
+    transition: .3s;
 }
 
-.navbar ul:hover has ~ li:hover:before {
-  translate: 100% 0;
-  transition: .2s .2s, scale 0s .4s;
+.navbar ul:hover li:has(~ li:hover):before {
+    translate: 100% 0;
+    transition: .2s .2s, scale 0s .4s;
 }
 
 .navbar ul:hover li:hover ~ li:before {
-  translate: -100% 0;
-  transition: .2s .2s, scale 0s .4s;
+    translate: -100% 0;
+    transition: .2s .2s, scale 0s .4s;
 }
 
-.homepagecontent {
-  background: linear-gradient(to top, #00ff88, #61efff);
-  display: inline-flex;
-  position: relative;
-  width: 100%;
-  height: 40em;
-  z-index: -1;
-  overflow: hidden;
+.image:hover {
+    opacity: 0.7;
+    filter: drop-shadow(1px 1px 20px yellow);
+}
+
+.hover-text {
+    top: 50%;
+    left: 28%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    z-index: 2;
+}
+
+.image-container:hover .hover-text {
+    opacity: 1;
+    z-index: 0;
 }
 
 .background-circle {
-  position: absolute;
-  width: 1000px;
-  height: 1100px;
-  background-color: #ce4f20;
-  border-radius: 50%;
-  top: 50%;
-  left: 10%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
+    position: absolute;
+    width: 1000px;
+    height: 1100px;
+    background-color: #ce4f20;
+    border-radius: 50%;
+    top: 50%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
 
 @keyframes slideAnimation {
@@ -119,40 +133,101 @@ body {
   }
 }
 
-.image-container {
-  position: absolute;
-  display: inline-block;
-  top:  50%;
-  left: 20%;
-  animation: slideAnimation 12s infinite;
-}
-
-.image-container:nth-child(2) {
-  animation-delay: -16s;
-}
-
-.image-container:nth-child(3) {
-  animation-delay: -12s;
-}
-
-.image-container:nth-child(4) {
-  animation-delay: -8s;
-}
-
-.image-container:nth-child(5) {
-  animation-delay: -4s;
-}
-
-.image-container:nth-child(6) {
-  animation-delay: 0s;
-}
 .image {
-  width: 30em;
-  height: 30em;
+  width: 40em;
+  height: 40em;
   border-radius: 50%;
   padding: 0;
   margin: 50px;
   background-color: white;
   z-index: 0;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
+
+.image-container {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  left: 25%;
+  animation: slideAnimation 12s infinite;
+}
+
+
+.image-container:nth-child(2) {
+  animation-delay: -8s;
+}
+
+.image-container:nth-child(3) {
+  animation-delay: -4s;
+}
+
+.image-container:nth-child(4) {
+  animation-delay: 0s;
+}
+
+.homepagecontent {
+    background: linear-gradient(to top, #00ff88, #61efff);
+    display: inline-flex;
+    position: relative;
+    width: 100%;
+    height: 50em;
+    z-index: -1;
+    overflow: hidden;
+}
+
+@keyframes descriptionSlide{
+    0% {
+        transform: translate(-150%, 150%); /* Sol alttan başla */
+        opacity: 0;
+        visibility: hidden;
+    }
+    3% {
+        transform: translate(-60%, -50%); /* Ortaya gel */
+        opacity: 1;
+        visibility: visible;
+    }
+    30% {
+        transform: translate(-50%, -50%); /* Ortada bekle */
+        opacity: 1;
+        visibility: visible;
+    }
+    33% {
+        transform: translate(-150%, -150%); /* Sol üste git */
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        transform: translate(-150%, -150%);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.description-container:nth-child(2) {
+    animation-delay: -8s;
+  }
+  
+  .description-container:nth-child(3) {
+    animation-delay: -4s;
+  }
+  
+  .description-container:nth-child(4) {
+    animation-delay: 0s;
+  }
+
+  .description-container {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 60%;
+    animation: slideAnimation 12s infinite;
+  }
+
+  .description {
+    width: 40em;
+    height: 40em;
+    padding: 0;
+    margin: 50px;
+    z-index: 0;
+    transition: all 0.2s ease;
+  }
